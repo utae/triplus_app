@@ -7,6 +7,8 @@ import CityItem from '../../components/List/CityItem';
 import BackButton from "../../components/TopBar/BackButton";
 import {theme} from '../../constants/ComponentTheme'
 
+import {CITY_LIST} from "../../constants/API";
+
 type Props = {};
 export default class SearchCityPage extends Component<Props> {
     static navigationOptions = ({ navigation }) => {
@@ -34,7 +36,7 @@ export default class SearchCityPage extends Component<Props> {
     }
 
     fetchCityData() {
-        fetch('http://localhost:8000/api/1.0/city')
+        fetch(CITY_LIST)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
