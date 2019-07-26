@@ -35,13 +35,8 @@ export default class SearchCityPage extends Component<Props> {
         this.fetchCityData();
     }
 
-<<<<<<< HEAD
-    fetchCityData() {
+    _fetchCityData = () => {
         fetch(CITY_LIST)
-=======
-    fetchCityData = () => {
-        fetch('http://localhost:8000/api/1.0/city')
->>>>>>> 0f49a8d61c15559b3f2a4f986ef3dbce42d91a4f
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({
