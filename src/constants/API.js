@@ -11,4 +11,4 @@ export const TRIP_INFO_LIST = SERVER_URL + '/api/v1/trip_info';
 export const TRIP_INFO_DETAIL = (pk) => (SERVER_URL + '/api/v1/trip_info/'+ pk + '/details');
 
 export const TRIP_PACKAGE_LIST = SERVER_URL + '/api/v1/trip_package';
-export const TRIP_INFO_DETAIL = (pk) => (SERVER_URL + '/api/v1/trip_package/'+ pk + '/details');
+export const TRIP_PACKAGE_DETAIL = (pk) => (SERVER_URL + '/api/v1/trip_package/'+ pk + '/details');
