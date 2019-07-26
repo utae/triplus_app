@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, Text, StyleSheet, View} from "react-native";
 import * as assets from '../../../assets/image';
 
-export default class App extends Component<Props> {
+export default class LanguageCurrencyPage extends Component<Props> {
 
     render() {
         return (

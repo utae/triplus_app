@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Image, Text, StyleSheet, View, TouchableOpacity} from "react-native";
 
 
-export default class App extends Component<Props>{
+export default class BeforeLoginSkeleton extends Component<Props>{
 
     constructor(props){
         super(props)

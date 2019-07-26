@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, Text, StyleSheet, View, TouchableOpacity, FlatList} from "react-native";
 import * as assets from '../../../assets/image';
 
-export default class App extends Component<Props> {
+export default class LanguagePage extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
