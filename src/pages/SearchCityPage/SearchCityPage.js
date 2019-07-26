@@ -32,7 +32,7 @@ export default class SearchCityPage extends Component<Props> {
     }
 
     componentDidMount(): void {
-        this.fetchCityData();
+        this._fetchCityData();
     }
 
     _fetchCityData = () => {

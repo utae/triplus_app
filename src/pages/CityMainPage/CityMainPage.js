@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {
     View,
-    StyleSheet,
-    ImageBackground,
+    StyleSheet, ActivityIndicator,
 } from 'react-native';
 
 import MixedList, {itemType} from "../../components/List/MixedList";
@@ -13,6 +12,7 @@ import CityHeader from "./CityHeader";
 import DrawerButton from "../../components/TopBar/DrawerButton";
 
 import { info01, info02, package01, package02, review01, review02 } from 'Triplus/assets/image'
+import * as API from "../../constants/API";
 
 type Props = {};
 export default class CityMainPage extends Component<Props> {
@@ -35,6 +35,17 @@ export default class CityMainPage extends Component<Props> {
         };
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+        };
+    }
+
+    componentDidMount(): void {
+        this._fetchTripInfoData();
+    }
+
     _onScroll = (event) => {
         if(this.props.navigation.getParam("headerTransparent") && event.nativeEvent.contentOffset.y >= 250){
             this.props.navigation.setParams({"headerTransparent": false})
@@ -44,20 +55,55 @@ export default class CityMainPage extends Component<Props> {
         }
     };
 
+    _fetchTripInfoData = () => {
+        fetch(API.TRIP_INFO_LIST)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    originalData: responseJson,
+                });
+                this._fetchTripPackageData();
+                console.log(responseJson);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
+    _fetchTripPackageData = () => {
+        fetch(API.TRIP_PACKAGE_LIST)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                let mixedData = this.state.originalData.concat(responseJson);
+                if(mixedData.length > 1){
+                    mixedData.sort((a,b) => (a.created_at < b.created_at ? -1 : 1));
+                }
+                console.log(mixedData);
+                this.setState({
+                    originalData: mixedData,
+                    data: mixedData,
+                    isLoading: false,
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
     render() {
-        let dataSource = [
-            {type: itemType.TripInfo, source: info01, title: "대전 스카이로드 주변 \n 추천 맛집"},
-            {type: itemType.TripPackage, source: package01, title: "상품 1", price: "300000"},
-            {type: itemType.TripPackage, source: package02, title: "상품 2", price: "450000"},
-            {type: itemType.TripInfo, source: info02, title: "정보 2"},
-            {type: itemType.TripInfo, source: review01, title: "정보 3", price: "720000"},
-            {type: itemType.TripPackage, source: review02, title: "상품 3", price: "720000"}
-        ];
+
+        if(this.state.isLoading){
+            return(
+                <View style={{flex: 1, padding: 20}}>
+                    <ActivityIndicator/>
+                </View>
+            )
+        }
 
         return (
             <View style={styles.container}>
                 <MixedList
-                    data={dataSource}
+                    data={this.state.data}
                     header={
                         <CityHeader
                         img={this.props.navigation.getParam("city").main_img}
