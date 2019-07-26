@@ -41,7 +41,7 @@ export default class TripPackageItem extends Component{
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
+        flex: 0.5,
         height: 200,
         margin: 7,
     },

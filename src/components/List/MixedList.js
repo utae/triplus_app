@@ -17,32 +17,25 @@ export const itemType = {
 class MixedList extends Component{
 
     _renderItem = ({item, index}) => {
-        switch (item.type) {
-            case itemType.TripInfo:
-                return (
-                    <TripInfoItem
-                        source={item.source}
-                        title={item.title}
-                        isLeft={index % 2 === 0}
-                        onPress={()=>{this.props.navigation.navigate("TripInfoPage")}}
-                    />
-                );
-
-            case itemType.TripPackage:
-                return (
-                    <TripPackageItem
-                        source={item.source}
-                        title={item.title}
-                        price={item.price}
-                        isLeft={index % 2 === 0}
-                        onPress={()=>{this.props.navigation.navigate("TripPackagePage")}}
-                    />
-                );
-
-            case itemType.TripReview:
-                return (
-                    <View/>
-                );
+        if(item.hasOwnProperty('price')){
+            return (
+                <TripPackageItem
+                    source={{uri: item.main_img}}
+                    title={item.title}
+                    price={item.price}
+                    isLeft={index % 2 === 0}
+                    onPress={()=>{this.props.navigation.navigate("TripPackagePage")}}
+                />
+            );
+        }else{
+            return (
+                <TripInfoItem
+                    source={{uri: item.main_img}}
+                    title={item.title}
+                    isLeft={index % 2 === 0}
+                    onPress={()=>{this.props.navigation.navigate("TripInfoPage")}}
+                />
+            );
         }
     };
 

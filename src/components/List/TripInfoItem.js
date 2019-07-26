@@ -33,7 +33,7 @@ export default class TripInfoItem extends Component{
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
+        flex: 0.5,
         height: 200,
         marginTop: 7,
         marginBottom: 7,
