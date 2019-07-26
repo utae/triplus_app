@@ -1,0 +1,9 @@
+export const location = require('./location.png');
+export const like = require('./like.png');
+export const review = require('./review.png');
+export const share = require('./share.png');
+export const address = require('./address.png');
+export const phone = require('./phone.png');
+export const starOff = require('./star_off.png');
+export const starOn = require('./star_on.png');
+export const reviewWrite = require('./review_write.png');

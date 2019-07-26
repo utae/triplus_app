@@ -1,0 +1,1 @@
+export const partlyCloudy = require('./partlyCloudy.png');
