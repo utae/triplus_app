@@ -19,6 +19,8 @@ export default class IntroLoginPage extends Component<Props> {
                     source={assets.reviewThumbnailList[2]}
                     style={styles.container}>
                     <Image style={styles.logo} source={assets.logoImage}/>
+
+                    {/*SNS로그인 부분 시작*/}
                     <TouchableOpacity style={[styles.loginSnsButton, {backgroundColor: '#fae100'}]}>
                         <Image style={styles.snsIcon} source={assets.kakaoTalkIcon}/>
                         <Text style={[styles.loginSnsText, {color: '#381e1f'}]}>{'카카오톡 로그인'}</Text>
@@ -31,11 +33,15 @@ export default class IntroLoginPage extends Component<Props> {
                         <Image style={styles.snsIcon} source={assets.wechatIcon}/>
                         <Text style={[styles.loginSnsText, {color: '#ffffff'}]}>{'위쳇 로그인'}</Text>
                     </TouchableOpacity>
+                    {/*SNS로그인 부분 끝*/}
+                    {/*OR디바이더 뷰 시작*/}
                     <View style={styles.dividerView}>
                         <View style={{width: 50, height: 1, backgroundColor: '#e1e1e1'}}/>
                         <Text style={{fontSize: 13, color: '#cccccc'}}>{'or'}</Text>
                         <View style={{width: 50, height: 1, backgroundColor: '#e1e1e1'}}/>
                     </View>
+                    {/*OR디바이더 뷰 끝*/}
+                    {/*로그인 회원가입 버튼 시작*/}
                     <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 34}}>
                         <TouchableOpacity style={[styles.LoginRegisterButton, {marginRight: 15}]}>
                             <Text style={{fontSize:11,color:'#333333'}}>{'로그인'}</Text>
@@ -44,6 +50,7 @@ export default class IntroLoginPage extends Component<Props> {
                             <Text style={{fontSize:11,color:'#333333'}}>{'회원가입'}</Text>
                         </TouchableOpacity>
                     </View>
+                    {/*로그인 회원가입 버튼 끝*/}
 
                     {/*찾기 부분 시작*/}
                     <View style={{flexDirection: 'row',marginBottom:70}}>

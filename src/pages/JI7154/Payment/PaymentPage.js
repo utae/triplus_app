@@ -38,12 +38,13 @@ export default class PaymentPage extends Component<Props> {
 
         }
     }
-
+    //가격을 3자리 단위로 끊어주는 함수
     _formattingPrice(num) {
         var regexp = /\B(?=(\d{3})+(?!\d))/g;
         return num.toString().replace(regexp, ',');
     }
 
+    //입력중인 폼부분 handling
     _handleFocus(key) {
         const value = !this.state.forms[key].onFocus
         this.setState({
@@ -58,6 +59,7 @@ export default class PaymentPage extends Component<Props> {
         })
     }
 
+    //Focus가 사라졌을 때 handling
     _handleBlur(key) {
         const value = !this.state.forms[key].onFocus
         this.setState({
@@ -71,6 +73,7 @@ export default class PaymentPage extends Component<Props> {
         })
     }
 
+    //dropdown에서 선택된 값을 state 내의 forms 배열에 저장
     dropdownSelectValue(key, value) {
         this.setState({
             forms: update(
@@ -83,6 +86,7 @@ export default class PaymentPage extends Component<Props> {
         })
     }
 
+    //결제수단을 선택했을 때 해당 index를 저장
     selectPayMethod(key){
         this.setState({
             payMethod: update(
@@ -96,13 +100,14 @@ export default class PaymentPage extends Component<Props> {
         console.log(this.state.payMethod)
 
     }
-
+    //이용약관 동의를 클릭시 handle
     agreeTerms(){
         this.setState({
             agreeTerms:!this.state.agreeTerms
         })
     }
 
+    //결제하기 버튼을 눌렀을때 함수
     pay(){
         if(this.state.agreeTerms){
             alert('결제완료')
@@ -112,17 +117,20 @@ export default class PaymentPage extends Component<Props> {
         }
     }
 
+    //이용약관 Text 클릭 시 함수
     _terms(){
         alert('이용약관')
     }
+    //개인 정보 처리방침 Text 클릭 시 함수
     _privacy(){
         alert('개인정보 처리방침')
     }
 
-
+    //예약 정보의 form들을 rendering하는 함수
     renderForm() {
         return (
             this.state.forms.map((form, key) => {
+                    //dropdown이 아닌 일반 TextInput form rendering
                     if (form.mode == 0) {
                         return (
                             <View style={styles.form} key={key}>
@@ -142,6 +150,7 @@ export default class PaymentPage extends Component<Props> {
                             </View>
                         )
                     } else {
+                        //dropdown 폼들 rendering
                         return (
                             <View style={styles.form} key={key}>
                                 <Text style={styles.formTitle}>{form.title}</Text>
@@ -178,6 +187,7 @@ export default class PaymentPage extends Component<Props> {
     render() {
         return (
             <ScrollView  style={styles.container}>
+                {/*상단 기본 정보 시작*/}
                 <View style={styles.listItem}>
                     <Image style={styles.thumbnailImage}
                            source={this.props.image}
@@ -195,20 +205,26 @@ export default class PaymentPage extends Component<Props> {
                         <Text style={styles.price}>{'￦' + this._formattingPrice(this.props.price)}</Text>
                     </View>
                 </View>
+                {/*상단 기본정보 끝*/}
                 <Divider/>
+                {/*예약 정보 시작*/}
                 <Text style={styles.subTitle}>예약 정보</Text>
                 <View style={styles.rsvInfoContainer}>
                     <View style={{height: 1, backgroundColor: '#e1e1e1', marginBottom: 20}}/>
                     {this.renderForm()}
                 </View>
+                {/*예약 정보 끝*/}
                 <Divider/>
+                {/*결재 정보 시작*/}
                 <Text style={styles.payInfoView}>{'결재 정보'}</Text>
                 <View style={{marginLeft: 15, marginRight: 15, height: 1, backgroundColor: '#e1e1e1'}}/>
                 <View style={styles.totalPriceInfo}>
                     <Text style={styles.totalPriceText}>{'총 금액'}</Text>
                     <Text style={styles.totalPriceForPay}>{this._formattingPrice(this.props.price) + ' ￦'}</Text>
                 </View>
+                {/*결재 정보 끝*/}
                 <Divider/>
+                {/*결제 방법 선택 시작*/}
                 <View style={{paddingLeft:15,paddingRight:15,}}>
                     <View style={styles.payMethodTitleView}>
                         <Text style={styles.payMethodTitle}>{'결제 선택'}</Text>
@@ -238,12 +254,14 @@ export default class PaymentPage extends Component<Props> {
                         <Text style={styles.payMethodText}>{'신용카드'}</Text>
                     </TouchableOpacity>
                 </View>
+                {/*결재 방법 끝*/}
                 <Divider/>
-                <View style={{paddingTop:30,paddingLeft:15,paddingRight:15}}>
+                <View style={styles.termsAndPayView}>
                     <TouchableOpacity
                         style={{flexDirection:'row',marginBottom:30,flexGrow:1}}
                         onPress={()=>this.agreeTerms()}>
-                        <Image  style={{width:16,height:16,resizeMode:'contain',marginRight:10,}} source={this.state.agreeTerms?assets.checkedIcon:assets.unCheckedIcon}/>
+                        <Image  style={{width:16,height:16,resizeMode:'contain',marginRight:10,}}
+                                source={this.state.agreeTerms?assets.checkedIcon:assets.unCheckedIcon}/>
                         <Text style={{flex:1}}>
                             <Text style={styles.agreePlainText}>결제 진행시, </Text>
                             <Text style={styles.emphasizeText}
@@ -253,10 +271,11 @@ export default class PaymentPage extends Component<Props> {
                                   onPress={()=>this._privacy()}>개인정보 처리방침</Text>
                             <Text style={styles.agreePlainText}>을 모두 읽고, 이에 동의하는 것으로 간주합니다.</Text>
                         </Text>
-
                     </TouchableOpacity>
+
+                    {/*결제하기 버튼*/}
                     <TouchableOpacity
-                        style={{flex:1,height:45,borderRadius:10,backgroundColor:'#f20c49',marginBottom:121,alignItems:'center',justifyContent:'center'}}
+                        style={styles.payButton}
                         onPress={()=>this.pay()}>
                         <Text style={{fontSize:14,color:'#ffffff'}}>{'결제하기'}</Text>
                     </TouchableOpacity>
@@ -430,6 +449,20 @@ const styles = StyleSheet.create({
         fontSize:12,
         color :'#000000'
     },
+    termsAndPayView:{
+        paddingTop:30,
+        paddingLeft:15,
+        paddingRight:15
+    },
+    payButton:{
+        flex:1,
+        height:45,
+        borderRadius:10,
+        backgroundColor:'#f20c49',
+        marginBottom:121,
+        alignItems:'center',
+        justifyContent:'center'
+    },
     agreePlainText:{
         fontSize:12,
         color:'#777777'
@@ -437,6 +470,6 @@ const styles = StyleSheet.create({
     emphasizeText:{
       fontSize:12,
       color:'#f20c49'
-    }
+    },
 
 })
