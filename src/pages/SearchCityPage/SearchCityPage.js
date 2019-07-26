@@ -35,7 +35,7 @@ export default class SearchCityPage extends Component<Props> {
         this.fetchCityData();
     }
 
-    fetchCityData() {
+    _fetchCityData = () => {
         fetch(CITY_LIST)
             .then((response) => response.json())
             .then((responseJson) => {
