@@ -5,7 +5,7 @@ import * as assets from "../../../assets/image";
 const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 
-export default class App extends Component<Props>{
+export default class CurrencyPage extends Component<Props>{
     constructor(props){
         super(props);
         this.state = {

@@ -26,6 +26,7 @@ export default class OptionPickPage extends Component<Props> {
         return num.toString().replace(regexp, ',');
     }
 
+    //옵션에서 마이너스 버튼을 눌렀을 때 핸들링
     _subtractCount(index) {
         if (this.state.options[index].count > 0) {
             let value = this.state.options[index].count - 1
@@ -44,6 +45,7 @@ export default class OptionPickPage extends Component<Props> {
         }
     }
 
+    //옵션에서 플러스 버튼을 눌렀을 때 핸들링
     _plusCount(index) {
         let value = this.state.options[index].count + 1
         this.setState({
@@ -59,6 +61,7 @@ export default class OptionPickPage extends Component<Props> {
 
     }
 
+    //옵션들을 랜더링
     _renderOption() {
         return (
             this.state.options.map((options, index) => {
@@ -96,6 +99,7 @@ export default class OptionPickPage extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
+                {/*날짜 선택 뷰*/}
                 <Text style={styles.dateSelectText}>{'날짜선택'}</Text>
                 <View style={{flexDirection: 'row', marginBottom: 28}}>
                     <View style={styles.imageView}>
@@ -105,8 +109,12 @@ export default class OptionPickPage extends Component<Props> {
                         <Text style={styles.selectedDate}>{this.props.selectedDate}</Text>
                     </View>
                 </View>
+                {/*날짜 선택 끝*/}
+                {/*예약옵션 선택*/}
                 <Text style={styles.optionPickText}>{'예약 옵션 선택'}</Text>
                 {this._renderOption()}
+                {/*예약옵션 끝*/}
+                {/*하단 결제 부분 시작*/}
                 <View style={styles.payView}>
                     <View style={styles.priceView}>
                         <Text style={styles.totalText}>{'TOTAL'}</Text>
@@ -116,6 +124,7 @@ export default class OptionPickPage extends Component<Props> {
                         <Text style={styles.payText}>{'결재하기'}</Text>
                     </TouchableOpacity>
                 </View>
+            {/*    결제 부분 끝*/}
             </View>
         )
     }
