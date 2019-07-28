@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, TextInput, View} from 'react-native';
 
-import TopBarSearchBar from '../../components/TopBar/TopBarSearchBar';
+import TopBarSearchBar from '../../components/Header/TopBarSearchBar';
 import CityItem from '../../components/List/CityItem';
 
-import BackButton from "../../components/TopBar/BackButton";
+import BackButton from "../../components/Header/BackButton";
 import {theme} from '../../constants/ComponentTheme'
 
 import {CITY_LIST} from "../../constants/API";

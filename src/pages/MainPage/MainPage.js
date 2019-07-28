@@ -12,7 +12,8 @@ import LandscapeBanner from '../../components/List/LandscapeBanner';
 import PortraitBanner from '../../components/List/PortraitBanner';
 import HorizontalList from "../../components/List/HorizontalList";
 
-import {backBtnBlack, landSampleBanner, portraitSampleBanner01, portraitSampleBanner02, rightArrowCircle} from 'Triplus/assets/image'
+import * as images from 'image/MainPage'
+import * as samples from 'image/Sample'
 
 
 type Props = {};
@@ -46,7 +47,7 @@ export default class MainPage extends Component<Props> {
 
                 <View style={styles.rowDirectionContainer}>
                     <HorizontalList
-                        data={[{source: landSampleBanner, title: "2019 국내여행 트랜드", subtitle: "국내여행 가격비교 최대 30%할인 / 6월 30일까지"}, {source: landSampleBanner, title: "2019 국내여행 트랜드", subtitle: "국내여행 가격비교 최대 30%할인 / 6월 30일까지"}]}
+                        data={[{source: samples.landSampleBanner, title: "2019 국내여행 트랜드", subtitle: "국내여행 가격비교 최대 30%할인 / 6월 30일까지"}, {source: samples.landSampleBanner, title: "2019 국내여행 트랜드", subtitle: "국내여행 가격비교 최대 30%할인 / 6월 30일까지"}]}
                         renderItem={({item}) => (
                             <LandscapeBanner
                                 source={item.source}
@@ -65,7 +66,7 @@ export default class MainPage extends Component<Props> {
 
                 <View style={styles.rowDirectionContainer}>
                     <HorizontalList
-                        data={[{source: portraitSampleBanner01, title: "강원도", subtitle: "22만원부터"}, {source: portraitSampleBanner02, title: "제주도", subtitle: "22만원부터"},{source: portraitSampleBanner01, title: "강원도", subtitle: "22만원부터"}, {source: portraitSampleBanner02, title: "제주도", subtitle: "22만원부터"}]}
+                        data={[{source: samples.portraitSampleBanner01, title: "강원도", subtitle: "22만원부터"}, {source: samples.portraitSampleBanner02, title: "제주도", subtitle: "22만원부터"},{source: samples.portraitSampleBanner01, title: "강원도", subtitle: "22만원부터"}, {source: samples.portraitSampleBanner02, title: "제주도", subtitle: "22만원부터"}]}
                         renderItem={({item}) => (
                             <PortraitBanner
                                 source={item.source}
@@ -90,7 +91,7 @@ export default class MainPage extends Component<Props> {
                             </Text>
                         </Text>
                         <Image
-                            source={rightArrowCircle}
+                            source={images.rightArrowCircle}
                             style={{width: 25, height: 25}}
                         />
                     </TouchableOpacity>

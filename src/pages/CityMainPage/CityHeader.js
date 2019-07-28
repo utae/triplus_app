@@ -7,7 +7,7 @@ import {
     Image
 } from "react-native";
 
-import { partlyCloudy } from 'Triplus/assets/image'
+import { partlyCloudy } from 'image/CityMain'
 
 export default class MixedList extends Component{
 

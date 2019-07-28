@@ -7,14 +7,11 @@ import {
 import { IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 
 import {theme} from "../../constants/ComponentTheme";
-import BackButton from "../../components/TopBar/BackButton";
-import DrawerButton from "../../components/TopBar/DrawerButton";
+import BackButton from "../../components/Header/BackButton";
+import DrawerButton from "../../components/Header/DrawerButton";
 import Dimensions from "react-native/Libraries/Utilities/Dimensions";
 
-import { tripInfoList } from 'Triplus/assets/image'
-
 const {width, height} = Dimensions.get('window');
-const images = tripInfoList;
 
 
 type Props = {};
@@ -26,16 +23,11 @@ export default class TripInfoPage extends Component<Props> {
                 <BackButton
                     theme={theme.LIGHT}/>
             ),
-            headerRight: (
-                <DrawerButton
-                    theme={theme.LIGHT}
-                    onPress={navigation.openDrawer}/>
-            ),
             headerTransparent: true,
         };
     };
 
-    renderImages(){
+    _renderImages = () => {
         let imgList=[];
         for(let i=0;i<images.length;i++){
             imgList.push(
@@ -47,15 +39,18 @@ export default class TripInfoPage extends Component<Props> {
 
         }
         return imgList
-    }
+    };
 
     render() {
         return (
             <View style={{flex:1}}>
                 <IndicatorViewPager
-                    style={{flex:1}}
-                >
-                    {this.renderImages()}
+                    style={{flex:1}}>
+
+
+
+                    {this._renderImages()}
+
                 </IndicatorViewPager>
             </View>
         );

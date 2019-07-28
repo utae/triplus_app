@@ -7,7 +7,7 @@ import {
     Image,
 } from 'react-native';
 
-import {mainSearchBtn} from 'Triplus/assets/image';
+import * as Images from 'image/MainPage';
 
 export default class SearchBar extends Component{
 
@@ -20,7 +20,7 @@ export default class SearchBar extends Component{
                     onPress={this.props.onPress}>
                     <Text style={styles.text}> 어디로 떠날까요? </Text>
                     <Image
-                        source={mainSearchBtn}
+                        source={Images.mainSearchBtn}
                         style={styles.icon}
                     />
                 </TouchableOpacity>

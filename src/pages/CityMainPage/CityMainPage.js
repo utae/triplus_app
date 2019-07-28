@@ -5,13 +5,13 @@ import {
 } from 'react-native';
 
 import MixedList, {itemType} from "../../components/List/MixedList";
-import TopBarSearchBar from "../../components/TopBar/TopBarSearchBar";
-import BackButton from "../../components/TopBar/BackButton";
+import TopBarSearchBar from "../../components/Header/TopBarSearchBar";
+import BackButton from "../../components/Header/BackButton";
 import {theme} from '../../constants/ComponentTheme'
 import CityHeader from "./CityHeader";
-import DrawerButton from "../../components/TopBar/DrawerButton";
+import DrawerButton from "../../components/Header/DrawerButton";
 
-import { info01, info02, package01, package02, review01, review02 } from 'Triplus/assets/image'
+import { info01, info02, package01, package02, review01, review02 } from 'image/Sample'
 import * as API from "../../constants/API";
 
 type Props = {};

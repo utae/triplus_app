@@ -4,7 +4,7 @@ import {
 } from "react-native"
 
 import {theme} from "../../constants/ComponentTheme";
-import BackButton from "../../components/TopBar/BackButton";
+import BackButton from "../../components/Header/BackButton";
 
 import {login, registration} from "../../constants/API";
 

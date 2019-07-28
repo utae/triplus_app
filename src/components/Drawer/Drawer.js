@@ -10,7 +10,7 @@ import {SafeAreaView} from "react-navigation";
 
 import DrawerProfile from './DrawerProfile';
 
-import {xBlack, settings, wishList, bookingList, likeList} from 'Triplus/assets/image'
+import {xBlack, settings, wishList, bookingList, likeList} from 'image/Drawer'
 
 
 export default class Drawer extends Component{

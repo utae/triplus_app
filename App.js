@@ -6,8 +6,8 @@ import MainPage from "./src/pages/MainPage/MainPage";
 import SearchCityPage from "./src/pages/SearchCityPage/SearchCityPage";
 import CityMainPage from "./src/pages/CityMainPage/CityMainPage";
 
-import TopBarTitle from "./src/components/TopBar/TopBarTitle";
-import DrawerButton from "./src/components/TopBar/DrawerButton";
+import TopBarTitle from "./src/components/Header/TopBarTitle";
+import DrawerButton from "./src/components/Header/DrawerButton";
 import {theme} from './src/constants/ComponentTheme';
 import Drawer from "./src/components/Drawer/Drawer";
 import TripInfoPage from "./src/pages/TripInfoPage/TripInfoPage";

@@ -4,7 +4,7 @@ import {
     Image,
 } from 'react-native';
 
-import {drawerBtnBlack, drawerBtnWhite} from 'image/Drawer'
+import {drawerBtnBlack, drawerBtnWhite} from 'image/Header'
 
 import {theme} from '../../constants/ComponentTheme'
 
