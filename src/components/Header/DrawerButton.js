@@ -4,7 +4,7 @@ import {
     Image,
 } from 'react-native';
 
-import {drawerBtnBlack, drawerBtnWhite} from 'Triplus/assets/image'
+import {drawerBtnBlack, drawerBtnWhite} from 'image/Drawer'
 
 import {theme} from '../../constants/ComponentTheme'
 

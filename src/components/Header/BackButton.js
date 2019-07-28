@@ -6,7 +6,7 @@ import {
 
 import { withNavigation } from 'react-navigation';
 
-import {backBtnBlack, backBtnWhite} from 'Triplus/assets/image'
+import {backBtnBlack, backBtnWhite} from 'image/Header'
 
 import {theme} from '../../constants/ComponentTheme'
 
