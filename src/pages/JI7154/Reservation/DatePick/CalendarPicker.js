@@ -16,7 +16,7 @@ const screenWidth = width < height ? width : height
 const screenHeight = width < height ? height : width
 
 type Props={
-    current:Object
+    current:Object,
     selectDay:string
 }
 
