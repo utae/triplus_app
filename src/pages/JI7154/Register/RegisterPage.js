@@ -3,7 +3,16 @@ import {Image, Text, StyleSheet, View, TextInput, TouchableOpacity, ScrollView} 
 import update from "react-addons-update";
 import * as assets from 'Triplus_Components/assets/image'
 
-export default class RegisterPage extends Component<Props> {
+type Props={
+
+}
+
+type State={
+    forms:Object,
+    termsAgree:Object
+}
+
+export default class RegisterPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

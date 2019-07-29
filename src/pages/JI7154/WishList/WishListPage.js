@@ -5,7 +5,10 @@ import * as assets from 'Triplus_Components/assets/image'
 const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 
-export default class WishListPage extends Component<Props> {
+type State =  {
+    items:Object
+}
+export default class WishListPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

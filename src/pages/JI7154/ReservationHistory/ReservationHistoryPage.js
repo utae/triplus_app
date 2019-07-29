@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {Image, Text, StyleSheet, View} from "react-native";
 import * as assets from 'Triplus_Components/assets/image'
 
+type State={
+    items:Object
+}
 
-export default class ReservationHistoryPage extends Component<Props> {
+export default class ReservationHistoryPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +19,6 @@ export default class ReservationHistoryPage extends Component<Props> {
                     price: '￦ 75,000'
                 }
             ],
-            option: []
         }
     }
 

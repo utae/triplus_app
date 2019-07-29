@@ -7,7 +7,16 @@ const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 const screenHeight = width < height ? height : width
 
-export default class OptionPickPage extends Component<Props> {
+type Props={
+    selectedDate:string
+}
+
+type State={
+    options:Object,
+    totalPrice:number,
+}
+
+export default class OptionPickPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

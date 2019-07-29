@@ -5,11 +5,17 @@ import * as assets from "../../../assets/image";
 const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 
-export default class CurrencyPage extends Component<Props>{
+type State ={
+    selectedCurrency : string,
+    recommendCurrencies: Object,
+    otherCurrencies: Object,
+};
+
+export default class CurrencyPage extends Component<Props,State>{
     constructor(props){
         super(props);
         this.state = {
-            selectedCurrency:{},
+            selectedCurrency:'',
             recommendCurrencies:['미국 USD (＄)','유럽연합 EUR (€)','일본 JPY  (￥)'],
             otherCurrencies:[
             '중국 CHY (￥)','홍콩 HK ( HK＄)','대만 TWD (NT＄)','뉴질랜드 NZD ( NZ＄)',
@@ -74,9 +80,6 @@ export default class CurrencyPage extends Component<Props>{
                     ItemSeparatorComponent={Divider}
                     keyExtractor={(item,index)=>index}/>
             </View>
-
-
-
         )
     }
 }

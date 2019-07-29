@@ -19,8 +19,21 @@ const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 const screenHeight = width < height ? height : width
 
+type Props={
+    image:number,
+    title:string,
+    date:string,
+    option:Object,
+    price:number,
+}
 
-export default class PaymentPage extends Component<Props> {
+type State ={
+    forms:Object,
+    payMethod:Object,
+    agreeTerms:boolean
+}
+
+export default class PaymentPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

@@ -5,7 +5,15 @@ import * as assets from 'Triplus_Components/assets/image'
 const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 
-export default class InviteFriendPage extends Component<Props> {
+type Props={
+    inviteCode:string,
+};
+
+type State={
+    datas:Object
+};
+
+export default class InviteFriendPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

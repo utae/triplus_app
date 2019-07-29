@@ -2,7 +2,13 @@ import React, {Component} from 'react';
 import {Image, Text, StyleSheet, View, TextInput,TouchableOpacity} from "react-native";
 import * as assets from 'Triplus_Components/assets/image'
 
-export default class InquirePage extends Component<Props> {
+type State={
+    userInfo: string,
+    emailInfo:string,
+    contentInfo:string
+};
+
+export default class InquirePage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

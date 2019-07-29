@@ -2,23 +2,31 @@ import React,{Component} from 'react';
 import {Image, Text, StyleSheet, View, TouchableOpacity} from "react-native";
 
 
-export default class BeforeLoginSkeleton extends Component<Props>{
 
-    constructor(props){
-        super(props)
+type Props = {
+    image : number,
+    title : string,
+    content: string,
 
-    }
-    render(){
-        return(
-            <View style={styles.container}>
-                <Image source={this.props.image} style={styles.image}/>
-                <Text style={styles.title}>{this.props.title}</Text>
-                <Text style={styles.content}>{this.props.content}</Text>
-                <TouchableOpacity style={styles.loginButton}>
-                    <Text style={styles.loginText}>로그인</Text>
-                </TouchableOpacity>
-            </View>
-        )
+    };
+
+
+    export default class BeforeLoginSkeleton extends Component<Props>{
+
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return(
+                <View style={styles.container}>
+                    <Image source={this.props.image} style={styles.image}/>
+                    <Text style={styles.title}>{this.props.title}</Text>
+                    <Text style={styles.content}>{this.props.content}</Text>
+                    <TouchableOpacity style={styles.loginButton}>
+                        <Text style={styles.loginText}>로그인</Text>
+                    </TouchableOpacity>
+                </View>
+            )
     }
 }
 
@@ -26,7 +34,6 @@ const styles = StyleSheet.create({
     container:{
       flex:1,
       alignItems: 'center',
-      justifyContent: 'center'
     },
     image :{
         marginTop:155,

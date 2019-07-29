@@ -3,7 +3,12 @@ import {Image, Text, StyleSheet, View, TextInput, TouchableOpacity} from "react-
 import * as assets from 'Triplus_Components/assets/image'
 import LinearGradient from "react-native-linear-gradient";
 
-export default class LoginPage extends Component<Props> {
+type State ={
+    idFocus:boolean,
+    pwdFocus : boolean,
+    autoLogin:boolean
+}
+export default class LoginPage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +19,6 @@ export default class LoginPage extends Component<Props> {
     }
 
     render() {
-        console.log(this.state.idFocus)
         return (
             <View style={styles.container}>
                 {/*ID 입력 폼 시작*/}

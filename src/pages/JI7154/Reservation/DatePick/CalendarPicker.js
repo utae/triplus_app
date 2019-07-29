@@ -15,8 +15,12 @@ const {width, height} = Dimensions.get('window')
 const screenWidth = width < height ? width : height
 const screenHeight = width < height ? height : width
 
+type Props={
+    current:Object
+    selectDay:string
+}
 
-export default class CalendarPicker extends Component {
+export default class CalendarPicker extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {

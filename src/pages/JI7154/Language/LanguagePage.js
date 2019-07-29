@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import {Image, Text, StyleSheet, View, TouchableOpacity, FlatList} from "react-native";
 import * as assets from '../../../assets/image';
 
+type State={
+    selectedLanguage:string,
+    languages:Object
+}
+
 export default class LanguagePage extends Component<Props> {
     constructor(props) {
         super(props);
