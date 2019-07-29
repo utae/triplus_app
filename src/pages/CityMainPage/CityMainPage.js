@@ -4,18 +4,26 @@ import {
     StyleSheet, ActivityIndicator,
 } from 'react-native';
 
-import MixedList, {itemType} from "../../components/List/MixedList";
+import MixedList from "../../components/List/MixedList";
 import TopBarSearchBar from "../../components/Header/TopBarSearchBar";
 import BackButton from "../../components/Header/BackButton";
 import {theme} from '../../constants/ComponentTheme'
 import CityHeader from "./CityHeader";
 import DrawerButton from "../../components/Header/DrawerButton";
 
-import { info01, info02, package01, package02, review01, review02 } from 'image/Sample'
 import * as API from "../../constants/API";
 
 type Props = {};
-export default class CityMainPage extends Component<Props> {
+
+type State = {
+    isLoading: boolean;
+};
+
+export default class CityMainPage extends Component<Props, State> {
+    state = {
+        isLoading: true,
+    };
+
     static navigationOptions = ({ navigation }) => {
         return {
             headerTitle:
@@ -34,13 +42,6 @@ export default class CityMainPage extends Component<Props> {
             headerTransparent: navigation.getParam("headerTransparent"),
         };
     };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: true,
-        };
-    }
 
     componentDidMount(): void {
         this._fetchTripInfoData();
@@ -106,7 +107,7 @@ export default class CityMainPage extends Component<Props> {
                     data={this.state.data}
                     header={
                         <CityHeader
-                        img={this.props.navigation.getParam("city").main_img}
+                        img={{uri: this.props.navigation.getParam("city").main_img}}
                         cityName={this.props.navigation.getParam("city").name}/>
                     }
                     onScroll={this._onScroll}

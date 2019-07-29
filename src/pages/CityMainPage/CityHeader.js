@@ -9,13 +9,13 @@ import {
 
 import { partlyCloudy } from 'image/CityMain'
 
-export default class MixedList extends Component{
+export default class CityHeader extends Component{
 
     render() {
         return (
             <View style={{flexDirection: 'row'}}>
                 <ImageBackground
-                    source={{uri: this.props.img}}
+                    source={this.props.img}
                     style={styles.image}
                 >
                     <View

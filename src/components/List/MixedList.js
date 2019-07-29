@@ -8,12 +8,6 @@ import { withNavigation } from 'react-navigation';
 import TripInfoItem from "./TripInfoItem";
 import TripPackageItem from "./TripPackageItem";
 
-export const itemType = {
-    TripInfo: 0,
-    TripPackage: 1,
-    TripReview: 2,
-};
-
 class MixedList extends Component{
 
     _renderItem = ({item, index}) => {
@@ -24,7 +18,12 @@ class MixedList extends Component{
                     title={item.title}
                     price={item.price}
                     isLeft={index % 2 === 0}
-                    onPress={()=>{this.props.navigation.navigate("TripPackagePage")}}
+                    onPress={()=>{
+                            this.props.navigation.navigate("TripPackagePage",{
+                                tripPackage: item,
+                            })
+                        }
+                    }
                 />
             );
         }else{
@@ -33,7 +32,12 @@ class MixedList extends Component{
                     source={{uri: item.main_img}}
                     title={item.title}
                     isLeft={index % 2 === 0}
-                    onPress={()=>{this.props.navigation.navigate("TripInfoPage")}}
+                    onPress={()=>{
+                            this.props.navigation.navigate("TripInfoPage",{
+                                tripInfo: item,
+                            })
+                        }
+                    }
                 />
             );
         }
