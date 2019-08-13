@@ -48,8 +48,11 @@ export default class InviteFriendPage extends Component<Props,State> {
         return (
             <View style={styles.container}>
                 <View style={styles.subContainerTop}>
+                    {/*타이틀*/}
                     <Text style={styles.title}>{'친구를\n초대해보세요 !'}</Text>
+
                     <View style={styles.inviteCodeView}>
+                        {/*친구초대코드*/}
                         <Text>{this.props.inviteCode}</Text>
                         <TouchableOpacity style={styles.copyCodeButton}>
                             <Text style={styles.inviteFriendCodeText}>{'친구초대코드'}</Text>
@@ -74,6 +77,8 @@ export default class InviteFriendPage extends Component<Props,State> {
                     height: 8,
                 }}></View>
                 {/*PageDivider*/}
+
+                {/*하단 초대하기 부분*/}
                 <View style={styles.subContainerBottom}>
                     <Text style={styles.bottomTitle}>{'초대하기'}</Text>
                 </View>

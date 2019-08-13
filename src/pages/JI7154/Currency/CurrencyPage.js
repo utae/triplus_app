@@ -35,6 +35,7 @@ export default class CurrencyPage extends Component<Props,State>{
         return(
             <View style={styles.container}>
                 <Divider/>
+                {/*추천통화 부분*/}
                 <SectionList
                     sections={[
                         {title: '추천 통화',data:this.state.recommendCurrencies},
@@ -58,6 +59,7 @@ export default class CurrencyPage extends Component<Props,State>{
                     keyExtractor={(item,index)=>index}
                 />
                 <SectionDivider/>
+                {/*기타 통화*/}
                 <SectionList
                     sections={[
                         {title: '기타 통화',data:this.state.otherCurrencies},

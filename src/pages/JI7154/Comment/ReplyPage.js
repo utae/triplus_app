@@ -3,56 +3,62 @@ import {Image, Text, StyleSheet, View, ScrollView, TouchableOpacity, TextInput} 
 import * as assets from 'Triplus_Components/assets/image'
 import update from "react-addons-update";
 
-type Props = {}
+type Props = {
+    profileImage: number,
+    userName: string,
+    date: string,
+    content: string,
+    likeActive: boolean,
+    replyCount: number
 
-type State = {
-    comments: {
-        profileImage: Object,
-        userName: string,
-        date: string,
-        content: string,
-        likeActive: boolean,
-        likeCount: number,
-        replyCount: number,
-    },
-    commentText:string
 }
 
-export default class CommentPage extends Component<Props, State> {
+type State = {
+    replies: [
+        {
+            profileImage: number,
+            userName: string,
+            date: string,
+            content: string,
+            likeActive: boolean,
+            likeCount: number,
+        }
+        ]
+}
+export default class App extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {
-            comments: [
+            replies: [
                 {
                     profileImage: assets.profileImgList[0],
                     userName: 'Username',
                     date: '2019년 5월 31일',
-                    content: '댓글 내용이 이곳에 표현됩니다. 말줄임표 없이 모든 내용이 표현되며, 댓글 내용이 늘어남에 따라 댓글 박스도 같이 늘어납니다. 몇 십줄이 되어도 댓글 내용은 모두 보이도록 합니다.',
+                    content: '답글의 경우 이렇게 표현이 됩니다.\n' +
+                        '댓글과는 다르게 하단 답글 정보가 없습니다.',
                     likeActive: false,
                     likeCount: 17,
-                    replyCount: 4
                 },
                 {
                     profileImage: assets.profileImgList[1],
-                    userName: 'myname',
+                    userName: 'Username',
                     date: '2019년 5월 31일',
-                    content: '댓글 내용이 이곳에 표현됩니다. 말줄임표 없이 모든 내용이 표현되며, 댓글 내용이 늘어남에 따라 댓글 박스도 같이 늘어납니다. 몇 십줄이 되어도 댓글 내용은 모두 보이도록 합니다.',
+                    content: '답글의 경우 이렇게 표현이 됩니다.\n' +
+                        '댓글과는 다르게 하단 답글 정보가 없습니다.',
                     likeActive: false,
                     likeCount: 17,
-                    replyCount: 4
+
                 }
-            ],
-            commentText:''
+            ]
         }
     }
 
-    //하트 아이콘을 눌렀을 때
     likeOnpress = (key) => {
-        const value = !this.state.comments[key].likeActive
-        const likeCount = value ? this.state.comments[key].likeCount + 1 : this.state.comments[key].likeCount - 1
+        const value = !this.state.replies[key].likeActive
+        const likeCount = value ? this.state.replies[key].likeCount + 1 : this.state.replies[key].likeCount - 1
         this.setState({
-            comments: update(
-                this.state.comments, {
+            replies: update(
+                this.state.replies, {
                     [key]: {
                         likeActive: {$set: value},
                         likeCount: {$set: likeCount}
@@ -66,11 +72,38 @@ export default class CommentPage extends Component<Props, State> {
         return (
             <View style={styles.container}>
                 <ScrollView>
+                    {/*댓글*/}
+                    <View style={styles.itemContainer}>
+                        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+                            <Image style={styles.profileImage} source={this.props.profileImage}/>
+                            <View>
+                                <Text style={styles.userName}>{this.props.userName}</Text>
+                                <Text style={styles.date}>{this.props.date}</Text>
+                            </View>
+                            <TouchableOpacity style={styles.moreButton}>
+                                <Image source={assets.moreIcon}/>
+                            </TouchableOpacity>
+                        </View>
+                        {/*상단 부분*/}
+                        <Text style={styles.content}>{this.props.content}</Text>
+                        {/*댓글 내용 부분*/}
+                        <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 15}}>
+                            <TouchableOpacity onPress={this.props.likeOnPress}>
+                                <Image style={styles.likeIcon}
+                                       source={this.props.likeActive ? assets.activeLike : assets.unactiveLike}/>
+                            </TouchableOpacity>
+                            <Text style={styles.likeCount}>{this.props.likeCount}</Text>
+                            <Image style={styles.replyIcon} source={assets.replyIcon}/>
+                            <Text style={styles.replyCount}>{this.props.replyCount}</Text>
+                        </View>
+                    </View>
                     <Divider/>
-                    {this.state.comments.map((item, index) => {
+
+                    {/*답글 렌더링*/}
+                    {this.state.replies.map((item, index) => {
                         return (
                             <View>
-                                <CommentListItem
+                                <ReplyListItem
                                     key={index}
                                     profileImage={item.profileImage}
                                     userName={item.userName}
@@ -85,27 +118,33 @@ export default class CommentPage extends Component<Props, State> {
                             </View>
                         )
                     })}
-                </ScrollView>
 
-                {/*하단 댓글 입력 시작*/}
-                <View style={{width:'100%',flexDirection: 'row', position: 'absolute', bottom:15,left:15,right:15,paddingLeft:10,paddingRight:10,height:40,borderWidth:0.5,borderColor:'#bfbfbf',borderRadius: 10,alignItems:'center',justifyContent:'space-between' }}>
+                </ScrollView>
+                {/*하단 댓글 입력창*/}
+                <View style={styles.replyView}>
                     <TextInput
                         placeholder={'댓글을 입력하세요.'}
-                        style={{justifyContent: 'center',fontSize:12,color:'#aaaaaa'}}
-                        onChangeText={(text)=>this.setState({commentText:text})}>
+                        style={{justifyContent: 'center', fontSize: 12, color: '#aaaaaa'}}>
 
                     </TextInput>
-                    <Image style={{width:20,height:20,resizeMode:'contain'}}source={assets.commentIcon}/>
+                    <Image style={{width: 20, height: 20, resizeMode: 'contain'}} source={assets.commentIcon}/>
                 </View>
             </View>
         )
     }
 }
 
-const CommentListItem = (props) => {
+const Divider = () => {
+    return (
+        <View style={{height: 1, backgroundColor: '#dedede'}}></View>
+    )
+}
+
+const ReplyListItem = (props) => {
     return (
         <View style={styles.itemContainer}>
             <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10}}>
+                <Image style={styles.replyIcon} source={assets.replyIcon}/>
                 <Image style={styles.profileImage} source={props.profileImage}/>
                 <View>
                     <Text style={styles.userName}>{props.userName}</Text>
@@ -116,23 +155,16 @@ const CommentListItem = (props) => {
                 </TouchableOpacity>
             </View>
             {/*상단 부분*/}
-            <Text style={styles.content}>{props.content}</Text>
+            <Text style={styles.replyContent}>{props.content}</Text>
             {/*댓글 내용 부분*/}
             <View style={{flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 15}}>
                 <TouchableOpacity onPress={props.likeOnPress}>
                     <Image style={styles.likeIcon} source={props.likeActive ? assets.activeLike : assets.unactiveLike}/>
                 </TouchableOpacity>
                 <Text style={styles.likeCount}>{props.likeCount}</Text>
-                <Image style={styles.replyIcon} source={assets.replyIcon}/>
-                <Text style={styles.replyCount}>{props.replyCount}</Text>
             </View>
         </View>
-    )
-}
 
-const Divider = () => {
-    return (
-        <View style={{height: 1, backgroundColor: '#dedede'}}></View>
     )
 }
 
@@ -175,6 +207,12 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#777777'
     },
+    replyContent: {
+        paddingLeft: 20,
+        flex: 1,
+        fontSize: 12,
+        color: '#777777'
+    },
     likeIcon: {
         height: 15,
         width: 15,
@@ -190,10 +228,26 @@ const styles = StyleSheet.create({
         width: 15,
         height: 15,
         resizeMode: 'contain',
-        marginRight: 3,
+        marginRight: 5,
     },
     replyCount: {
         fontSize: 10,
         color: '#777777'
+    },
+    replyView:{
+        width: '100%',
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 15,
+        left: 15,
+        right: 15,
+        paddingLeft: 10,
+        paddingRight: 10,
+        height: 40,
+        borderWidth: 0.5,
+        borderColor: '#bfbfbf',
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'space-between'
     }
 })

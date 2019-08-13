@@ -7,7 +7,7 @@ type State={
     languages:Object
 }
 
-export default class LanguagePage extends Component<Props> {
+export default class LanguagePage extends Component<Props,State> {
     constructor(props) {
         super(props);
         this.state = {

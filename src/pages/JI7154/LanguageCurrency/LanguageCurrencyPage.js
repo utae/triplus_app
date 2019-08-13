@@ -1,8 +1,19 @@
 import React, {Component} from 'react';
-import {Image, Text, StyleSheet, View} from "react-native";
+import {Image, Text, StyleSheet, View, TouchableOpacity} from "react-native";
 import * as assets from '../../../assets/image';
+import Modal from 'react-native-modal'
 
-export default class LanguageCurrencyPage extends Component<Props> {
+type State = {
+    modalVisible:boolean,
+}
+
+export default class LanguageCurrencyPage extends Component<Props,State> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalVisible: false
+        }
+    }
 
     render() {
         return (
@@ -19,6 +30,8 @@ export default class LanguageCurrencyPage extends Component<Props> {
                     content={'KRW/₩'}/>
 
                 <Divider/>
+
+
             </View>
         )
     }
@@ -72,5 +85,6 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: '#f20c49'
 
-    }
+    },
+
 })
