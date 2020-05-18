@@ -14,13 +14,15 @@ import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 import {
     portraitSampleBanner01, portraitSampleBanner02,
     packageImgList, reviewThumbnailList, profileImgList,
+} from 'image/Sample'
+import {
     location, like, review, share, address, phone, starOff, starOn,
     reviewWrite,
-} from 'Triplus/assets/image'
+} from 'image/TripPackage'
 import HorizontalList from "../../components/List/HorizontalList";
 import PortraitBanner from "../../components/List/PortraitBanner";
 import {theme} from "../../constants/ComponentTheme";
-import BackButton from "../../components/TopBar/BackButton";
+import BackButton from "../../components/Header/BackButton";
 
 const images = packageImgList;
 const photos = reviewThumbnailList;

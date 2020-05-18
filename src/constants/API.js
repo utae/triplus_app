@@ -1,4 +1,4 @@
-export const SERVER_URL = 'http://13.125.77.186';
+export const SERVER_URL = 'http://13.124.0.65';
 // export const SERVER_URL = 'http://localhost:8000';
 
 export const login = SERVER_URL + '/rest-auth/login';

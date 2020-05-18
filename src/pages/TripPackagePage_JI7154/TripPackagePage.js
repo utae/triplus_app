@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 import * as assets from './assets'
-import Preview from './src/component/Preview'
+import Preview from './component/Preview'
 import Notice from './src/component/Notice'
 import PageDivider from './src/component/Divider/PageDivider'
 import Map from './src/component/Map'
@@ -62,9 +62,6 @@ export default class App extends Component<Props> {
     _renderDotIndicator() {
         return <PagerDotIndicator pageCount={assets.images.length}/>;
     }
-
-
-
 
     renderImages() {
         return(
